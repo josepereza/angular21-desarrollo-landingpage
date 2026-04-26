@@ -9,12 +9,13 @@ APP_DIR="/var/www/goldwert-landingpages/current"
 
 cd "$APP_DIR"
 
-npm ci
+npm ci --include=dev
 npm run build:prod
 
 if command -v pm2 >/dev/null 2>&1; then
   pm2 startOrReload ecosystem.config.cjs --env production
   pm2 save
 else
-  systemctl restart goldwert-landingpages
+  echo "PM2 no está instalado. Arranca manualmente los procesos frontend y backend."
+  exit 1
 fi

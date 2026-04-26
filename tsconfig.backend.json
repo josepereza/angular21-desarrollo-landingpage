@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "target": "ES2022",
+    "rootDir": "./src/backend",
+    "outDir": "./dist/backend",
+    "types": [
+      "node"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "sourceMap": true
+  },
+  "include": [
+    "src/backend/**/*.ts"
+  ],
+  "exclude": [
+    "src/backend/**/*.spec.ts"
+  ]
+}

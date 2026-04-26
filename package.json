@@ -4,12 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:prod": "node dist/angular21-desarrollo-landingpage/server/server.mjs",
+    "start:frontend": "node scripts/start-frontend.mjs",
+    "start:backend": "node dist/backend/server.js",
+    "start:prod": "npm run start:frontend",
     "build": "ng build",
-    "build:prod": "ng build --configuration production",
+    "build:backend": "tsc -p tsconfig.backend.json",
+    "build:prod": "ng build --configuration production && npm run build:backend",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular21-desarrollo-landingpage": "node dist/angular21-desarrollo-landingpage/server/server.mjs",
+    "serve:ssr:angular21-desarrollo-landingpage": "npm run start:frontend",
     "deploy:prepare": "npm run build:prod"
   },
   "prettier": {

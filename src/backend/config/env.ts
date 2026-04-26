@@ -1,5 +1,6 @@
 export interface AppEnvironment {
   port: number;
+  backendBaseUrl: string;
   databaseUrl: string;
   gmailUser: string;
   gmailAppPassword: string;
@@ -12,6 +13,7 @@ export interface AppEnvironment {
 export function getEnvironment(): AppEnvironment {
   return {
     port: Number(process.env['PORT'] ?? 4000),
+    backendBaseUrl: process.env['BACKEND_BASE_URL'] ?? 'http://127.0.0.1:4001',
     databaseUrl:
       process.env['DATABASE_URL'] ??
       'postgresql://postgres:postgres@localhost:5432/goldwert_landingpages',

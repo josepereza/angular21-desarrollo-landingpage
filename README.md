@@ -1,6 +1,6 @@
 # Goldwert Landingpages
 
-Landing Page profesional en Angular 21 con SSR, frontend en alemán y backend integrado con Express, TypeORM, PostgreSQL, OpenAI y envío de correos con Gmail.
+Landing Page profesional en Angular 21 con SSR, frontend en alemán y backend separado con Express, TypeORM, PostgreSQL, OpenAI y envío de correos con Gmail.
 
 ## Desarrollo local
 
@@ -10,10 +10,12 @@ Instalar dependencias:
 npm install
 ```
 
-Levantar el proyecto en local:
+Levantar el frontend y el backend:
 
 ```bash
-npm start
+npm run build:prod
+npm run start:frontend
+npm run start:backend
 ```
 
 ## Variables de entorno
@@ -22,6 +24,8 @@ Parte de la plantilla incluida en [.env.example](./.env.example):
 
 ```bash
 PORT=4000
+BACKEND_BASE_URL=http://127.0.0.1:4001
+APP_BASE_URL=http://localhost:4000
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/goldwert_landingpages
 GMAIL_USER=tu-cuenta@gmail.com
 GMAIL_APP_PASSWORD=tu-app-password-de-gmail
@@ -44,7 +48,6 @@ psql "$DATABASE_URL" -f database/schema.sql
 
 ```bash
 npm run build:prod
-npm run start:prod
 ```
 
 ## Despliegue en VPS
@@ -52,7 +55,6 @@ npm run start:prod
 Archivos incluidos:
 
 - `ecosystem.config.cjs`: configuración para `pm2`
-- `deploy/goldwert-landingpages.service`: servicio `systemd`
 - `deploy/nginx.goldwert-landingpages.conf`: reverse proxy para Nginx
 - `deploy/deploy.sh`: script básico de despliegue
 
@@ -61,20 +63,11 @@ Flujo recomendado con `pm2`:
 ```bash
 sudo npm install -g pm2
 cp .env.example .env
-npm ci
+npm ci --include=dev
 npm run build:prod
 pm2 start ecosystem.config.cjs --env production
 pm2 save
 pm2 startup
-```
-
-Flujo recomendado con `systemd`:
-
-```bash
-sudo cp deploy/goldwert-landingpages.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable goldwert-landingpages
-sudo systemctl start goldwert-landingpages
 ```
 
 ## Verificación
@@ -84,4 +77,13 @@ Compilación del proyecto:
 ```bash
 npx ng build
 ```
-# angular21-desarrollo-landingpage
+
+Si aparece `sh: 1: ng: not found`, significa que faltan las `devDependencies` y no se instaló `@angular/cli`. En el VPS usa `npm ci --include=dev` antes de compilar; después de generar `dist/`, el proceso en producción ya no necesita `ng`.
+
+Con PM2 quedarán dos procesos:
+
+```bash
+pm2 list
+pm2 logs goldwert-frontend
+pm2 logs goldwert-backend
+```

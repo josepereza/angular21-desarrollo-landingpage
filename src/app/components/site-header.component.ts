@@ -62,7 +62,7 @@ import { filter } from 'rxjs';
 
     .brand-mark {
       color: var(--color-ivory);
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Georgia, 'Times New Roman', Times, serif;
       font-size: 2rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;

@@ -32,7 +32,7 @@ import { RouterLink } from '@angular/router';
     }
 
     .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Georgia, 'Times New Roman', Times, serif;
       font-size: 1.8rem;
       color: var(--color-gold-soft);
       margin-bottom: 0.5rem;
