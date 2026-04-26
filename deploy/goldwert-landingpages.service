@@ -1,0 +1,17 @@
+[Unit]
+Description=Goldwert Landingpages Angular SSR
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/goldwert-landingpages/current
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/goldwert-landingpages/shared/.env
+ExecStart=/usr/bin/node /var/www/goldwert-landingpages/current/dist/angular21-desarrollo-landingpage/server/server.mjs
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
