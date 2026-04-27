@@ -1,9 +1,11 @@
 import 'reflect-metadata';
 import express from 'express';
+import cors from 'cors';
 import { getEnvironment } from './config/env';
 
 const env = getEnvironment();
 const app = express();
+app.use(cors());
 let clientRouterPromise: Promise<express.Router> | null = null;
 
 app.use(express.json());

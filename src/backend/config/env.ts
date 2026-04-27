@@ -12,7 +12,7 @@ export interface AppEnvironment {
 
 export function getEnvironment(): AppEnvironment {
   return {
-    port: Number(process.env['PORT'] ?? 4000),
+    port: Number(process.env['PORT'] ?? 4001),
     backendBaseUrl: process.env['BACKEND_BASE_URL'] ?? 'http://127.0.0.1:4001',
     databaseUrl:
       process.env['DATABASE_URL'] ??

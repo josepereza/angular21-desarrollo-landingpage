@@ -189,23 +189,22 @@ import { RevealOnScrollDirective } from '../directives/reveal-on-scroll.directiv
 
     .eyebrow {
       color: var(--color-gold-soft);
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 700;
     }
 
     .hero-title {
-      font-size: clamp(3.3rem, 8vw, 6.6rem);
-      line-height: 0.9;
-      max-width: 11ch;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.1;
     }
 
     .hero-copy {
-      max-width: 620px;
+      max-width: 560px;
       color: var(--color-muted);
-      font-size: 1.15rem;
-      line-height: 1.9;
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
     .hero-card {
@@ -246,8 +245,8 @@ import { RevealOnScrollDirective } from '../directives/reveal-on-scroll.directiv
     .benefit-item h3,
     .service-card h3,
     .project-card h3 {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
     }
 
     .benefit-item p,

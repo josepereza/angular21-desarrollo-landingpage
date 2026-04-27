@@ -22,6 +22,7 @@ export class ContactApiService {
   private readonly http = inject(HttpClient);
 
   submitLead(payload: ContactPayload): Observable<ContactResponse> {
-    return this.http.post<ContactResponse>('/api/clients', payload);
+    const backendUrl = 'http://localhost:4001/api';
+    return this.http.post<ContactResponse>(`${backendUrl}/clients`, payload);
   }
 }
