@@ -51,7 +51,7 @@ import { ContactApiService } from '../services/contact-api.service';
                   type="url"
                   class="form-control form-control-lg"
                   formControlName="website"
-                  placeholder="https://ihre-domain.de"
+                  placeholder="https://ihre-domain.ch"
                 >
                 <div class="invalid-feedback">Bitte verwenden Sie eine vollständige URL.</div>
               </div>
